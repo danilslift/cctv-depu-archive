@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>德州扑克 · 日常查询与对照手册</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f5f9fb;
+            color: #1e2b35;
+            line-height: 1.6;
+            padding: 0 16px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px 0 48px;
+        }
+
+        /* 顶部导航 */
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0;
+            border-bottom: 1px solid #d3e4ed;
+            margin-bottom: 40px;
+        }
+        .nav-logo {
+            font-weight: 600;
+            font-size: 1.35rem;
+            color: #1a6f7a;
+            letter-spacing: 0.5px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #2a4b55;
+            font-size: 0.95rem;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #1a6f7a;
+            border-bottom-color: #38b2ac;
+        }
+
+        /* hero */
+        .hero {
+            margin-bottom: 48px;
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            color: #0d3b44;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            color: #3f5e68;
+            max-width: 720px;
+            margin-top: 12px;
+        }
+
+        /* 核心介绍段落 */
+        .intro-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 28px 32px;
+            margin-bottom: 48px;
+            box-shadow: 0 8px 20px rgba(0, 40, 50, 0.06);
+            border: 1px solid #e3eff4;
+        }
+        .intro-card p {
+            margin-bottom: 12px;
+        }
+        .intro-card a {
+            color: #1a6f7a;
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 4px;
+            font-weight: 500;
+        }
+        .intro-card a:hover {
+            color: #0e4f5a;
+            background: #e0f0f5;
+            border-radius: 2px;
+        }
+
+        /* 三个场景模块 —— 网格卡片 */
+        .grid-scenes {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 56px;
+        }
+        .scene-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 28px 22px;
+            border: 1px solid #e3eff4;
+            box-shadow: 0 4px 12px rgba(0, 50, 60, 0.04);
+            transition: transform 0.15s, box-shadow 0.2s;
+        }
+        .scene-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0, 70, 80, 0.08);
+        }
+        .scene-card h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #0d3b44;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .scene-card h3::before {
+            content: "▹";
+            color: #38b2ac;
+            font-size: 1.4rem;
+        }
+        .scene-card p {
+            color: #3f5e68;
+            font-size: 0.95rem;
+        }
+
+        /* 常见说明 / FAQ 摘要 */
+        .faq-section {
+            margin-top: 28px;
+            margin-bottom: 48px;
+        }
+        .faq-section h2 {
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: #0d3b44;
+            margin-bottom: 20px;
+            border-left: 5px solid #38b2ac;
+            padding-left: 16px;
+        }
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .faq-item {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 20px 24px;
+            border: 1px solid #e3eff4;
+            box-shadow: 0 2px 6px rgba(0, 40, 50, 0.03);
+        }
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #1a5a65;
+            margin-bottom: 6px;
+        }
+        .faq-item p {
+            color: #3f5e68;
+            font-size: 0.95rem;
+        }
+
+        /* 底部 */
+        .footer-note {
+            text-align: center;
+            padding: 32px 0 16px;
+            border-top: 1px solid #d3e4ed;
+            color: #5b7a84;
+            font-size: 0.9rem;
+        }
+        .footer-note a {
+            color: #1a6f7a;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 900px) {
+            .grid-scenes {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+        @media (max-width: 600px) {
+            .nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            .grid-scenes {
+                grid-template-columns: 1fr;
+            }
+            .intro-card {
+                padding: 20px 18px;
+            }
+            .scene-card {
+                padding: 22px 18px;
+            }
+            .faq-item {
+                padding: 16px 18px;
+            }
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* 小点缀 */
+        .dot-accent {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: #38b2ac;
+            border-radius: 10px;
+            margin-right: 6px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- 顶部导航 -->
+    <nav class="nav">
+        <span class="nav-logo">◈ 扑克日常</span>
+        <div class="nav-links">
+            <a href="#intro">概览</a>
+            <a href="#scenes">场景</a>
+            <a href="#faq">对照</a>
+        </div>
+    </nav>
+
+    <!-- hero -->
+    <div class="hero">
+        <h1>查询、对照、延伸</h1>
+        <p>一份围绕 <a href="https://cctv-depu.com" style="color:#1a6f7a; text-decoration:underline;">德州扑克</a> 的轻量导航，适合日常翻阅与规则对照。</p>
+    </div>
+
+    <!-- 核心介绍 -->
+    <div class="intro-card" id="intro">
+        <p>很多玩家习惯在牌局间隙快速查询某个概念，或者复盘时对照位置与赔率。这里没有长篇教程，只把最常见、最容易混淆的几点整理在一起。</p>
+        <p>如果你是第一次接触 <a href="https://cctv-depu.com">德州扑克</a>，可以从下面三个场景开始了解它的基本面貌；如果你已有经验，也可以把它当作一张备忘卡片。</p>
+        <p style="margin-bottom:0;">所有信息都基于通用规则整理，建议结合实战和官方资料交叉验证。</p>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div class="grid-scenes" id="scenes">
+        <div class="scene-card">
+            <h3>日常查询</h3>
+            <p>手牌强度、位置优先级、底池赔率快速估算。适合在牌桌间隙或观看直播时随手翻阅，不需要翻找长篇攻略。</p>
+        </div>
+        <div class="scene-card">
+            <h3>对照复习</h3>
+            <p>翻前范围、翻后线路、常见错误自查。把容易忽略的细节（比如位置对范围的影响）单独列出来，慢慢形成自己的查对习惯。</p>
+        </div>
+        <div class="scene-card">
+            <h3>延伸阅读</h3>
+            <p>一些经典牌局结构、概率分布和博弈思路的简洁说明。不追求覆盖所有变化，只选取最常被讨论、也最容易被误解的部分。</p>
+        </div>
+    </div>
+
+    <!-- 常见说明 / FAQ 摘要 -->
+    <div class="faq-section" id="faq">
+        <h2>常见对照</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <strong>位置为什么重要？</strong>
+                <p>后位能看到更多对手的行动再做决定，信息更完整。翻后位置越靠后，决策空间越大。这是初学者最容易忽略的维度。</p>
+            </div>
+            <div class="faq-item">
+                <strong>底池赔率怎么粗略算？</strong>
+                <p>跟注金额 ÷ (当前底池 + 跟注金额)。如果手牌胜率大于这个比值，通常值得继续。实战中还要考虑隐含赔率和对手倾向。</p>
+            </div>
+            <div class="faq-item">
+                <strong>翻前范围该紧还是松？</strong>
+                <p>没有固定答案。一般来说，早期位置用更紧的范围，后期位置可以适当放宽。关键是保持一致性，不要反复无常。</p>
+            </div>
+            <div class="faq-item">
+                <strong>怎么判断 bluff 成功率？</strong>
+                <p>考虑对手的弃牌倾向、牌面结构、你代表的牌力。成功率很难精确计算，但可以通过观察对手过去几手牌的弃牌频率来辅助判断。</p>
+            </div>
+        </div>
+        <p style="margin-top:24px; font-size:0.95rem; color:#3f5e68; padding-left:6px;">
+            <span class="dot-accent"></span> 如果需要更系统的规则说明，可以浏览 <a href="https://cctv-depu.com">德州扑克</a> 基础板块，那里有更细致的分类。
+        </p>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+        <p>日常查询 · 对照 · 延伸 · <a href="https://cctv-depu.com">德州扑克</a></p>
+        <p style="margin-top:6px; font-size:0.85rem; color:#7a9ba6;">信息整理仅供参考，实际规则以现场或官方版本为准</p>
+    </div>
+
+</div>
+</body>
+</html>
